@@ -46,7 +46,7 @@
         } 
     }
 
-    function getQues($link)
+    function getQues($link, $subID)
     {
         global $error;
 
@@ -54,8 +54,6 @@
 
         // variables declared global so that there updated values can be used throughout the code.
         global $ques, $optA, $optB, $optC, $optD;
-
-        $subID = mysqli_real_escape_string($link, $_SESSION["subID"]);
 
         $query = "SELECT Question, OptionA, OptionB, OptionC, OptionD from Questions WHERE SubID = '$subID'";
         $result = mysqli_query($link, $query);
@@ -102,6 +100,35 @@
         }
     }
 
+    function submitQuiz($link, $playerID, $subID)
+    {
+        global $error;
+
+        // Calculating numbers of total questions.
+        $totalQues = count($_SESSION["answers"]);
+
+        // Calculating number of attempted questions.
+        $attemptedQues = 0;
+        foreach($_SESSION["response"] as $x)
+            if($x != "Not Attempted")
+                $attemptedQues++;
+
+        // Calculating number of correct answers.
+        $noOfCorrectAns = 0;
+        foreach($_SESSION["isCorrect"] as $x)
+            if($x == 1)
+                $noOfCorrectAns++;
+
+        $query = "INSERT INTO Game (PlayerID, SubID, TotalQ, AttemptedQ, CorrectAns, Score) VALUES ($playerID, $subID, $totalQues, $attemptedQues, $noOfCorrectAns, $noOfCorrectAns*10);";
+        $result = mysqli_query($link, $query);
+
+        if(!$result)
+        {
+            $error = "The quiz was not submitted";
+            die(mysqli_error($result));
+        }
+    }
+
 
     
 
@@ -122,11 +149,12 @@
         // database connection file...
         require "connectDb.php";
 
-        // retrieving email from session variable
+        // retrieving email and subject from session variables
         $email = mysqli_real_escape_string($link, $_SESSION["email"]);
+        $subID = mysqli_real_escape_string($link, $_SESSION["subID"]);
 
         // executing query and generating query results...
-        $query = "SELECT Name FROM Users WHERE Email = '$email'";
+        $query = "SELECT Name, ID FROM Users WHERE Email = '$email'";
         $result = mysqli_query($link, $query);
 
         // checking if user exists...
@@ -137,6 +165,7 @@
             // Fetching user's name.
             $row = mysqli_fetch_array($result);
             $name = $row["Name"];
+            $playerID = $row["ID"];
 
             if(array_key_exists("nxtBtn", $_POST))
             {
@@ -145,7 +174,7 @@
                     chkAns();
                     $_SESSION["currQNo"]++;
                 }
-                getQues($link);
+                getQues($link, $subID);
             }
             else if(array_key_exists("prevBtn", $_POST))
             {
@@ -154,25 +183,31 @@
                     chkAns();
                     $_SESSION["currQNo"]--;
                 }
-                getQues($link);
+                getQues($link, $subID);
             }
             else if(array_key_exists("submit", $_POST))
             {
                 chkAns();
+                submitQuiz($link, $playerID, $subID);
                 header("Location:result.php");
             }
             else // on first page load.
             {
-                $_SESSION["currQNo"] = 1;
+                // Checking if previous quiz is still active. If not then starting a new one.
 
-                $_SESSION["isCorrect"] = array_fill(0, $totalQues, 0); // map for storing whether the ques was correctly answered or not (1/0).
-                // $_SESSION["attemptedQues"] = 0;
+                if(!isset($_SESSION["currQNo"]) || !isset($_SESSION["isCorrect"]) || !isset($_SESSION["response"]) || !isset($_SESSION["answers"]) || !isset($_SESSION["randomQNo"]))
+                {
+                    $_SESSION["currQNo"] = 1;
+
+                    $_SESSION["isCorrect"] = array_fill(0, $totalQues, 0); // map for storing whether the ques was correctly answered or not (1/0).
+                    // $_SESSION["attemptedQues"] = 0;
+                    
+                    $_SESSION["response"] = array_fill(0, $totalQues, 'Not Attempted'); // map for storing the answers(options) entered by the user.
+                    
+                    generateRandQues($link, $totalQues);
+                }
                 
-                $_SESSION["response"] = array_fill(0, $totalQues, 'Not Attempted'); // map for storing the answers(options) entered by the user.
-                
-                generateRandQues($link, $totalQues);
-                
-                getQues($link);
+                getQues($link, $subID);
             }
 
 ?>

@@ -42,7 +42,7 @@
         $result = mysqli_query($link, $query);
 
         // checking if user exists...
-        if(mysqli_num_rows($result))
+        if(!mysqli_num_rows($result))
             die("The user with this email does not exists");
         else
         {
