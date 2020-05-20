@@ -19,6 +19,11 @@
 
     // analysing how to react when the page loads.
 
+    if (isset($_SESSION["subID"]))
+    {
+        // The quiz has already started.
+        header("Location:quiz.php");
+    }
     if (array_key_exists("logOutBtn", $_POST))
     {
         // The user wants to log out.

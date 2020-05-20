@@ -2,8 +2,18 @@
     session_start();
 
     $error = ""; // Variable that contains login errors.
-
-    if(array_key_exists("email", $_POST) && array_key_exists("password", $_POST))
+    
+    if(isset($_SESSION["subID"]))
+    {
+        // Some user is logged in and the quiz has already started. Redirecting to quiz.php to continue the quiz.
+        header("Location:quiz.php");
+    }
+    elseif(isset($_SESSION["email"]))
+    {
+        // Someone is already logged in. Redirecting to the welcome page.
+        header("Location:welcome.php");
+    }
+    elseif(array_key_exists("email", $_POST) && array_key_exists("password", $_POST))
     {
         // database connection file...
         require "connectDb.php";
