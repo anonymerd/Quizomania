@@ -313,7 +313,7 @@ body
     color: #fff;
 }
 
-.addQuesPanel, .deleteQuesPanel, .addSubPanel, .deleteSubPanel, .showQuesPanel, .firstLoadPanel
+.addQuesPanel, .deleteQuesPanel, .addSubPanel, .showResultsPanel, .showQuesPanel, .firstLoadPanel
 {
     width: 80%;
     height: 80%;

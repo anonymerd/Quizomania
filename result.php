@@ -158,7 +158,8 @@
 
 <?php
 
-            unset($_SESSION);
+            session_unset();
+            
             $_SESSION["email"] = $email;
 
             include "footer.php";
