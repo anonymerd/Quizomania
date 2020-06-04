@@ -22,7 +22,7 @@
         $email = mysqli_real_escape_string($link, $_SESSION["admin"]);
 
         // executing query and generating query results...
-        $query = "SELECT Name, isAdmin FROM users WHERE Email = '$email'";
+        $query = "SELECT Name, isAdmin FROM Users WHERE Email = '$email'";
         $result = mysqli_query($link, $query);
 
         $row = mysqli_fetch_array($result);
@@ -248,10 +248,10 @@
     <form method="post">
 
         <div class="formElement">
-            <label for="optA">
+            <label for="newSub">
                 Enter the name of new subject :-
             </label>
-            <input type="text" class="form-control" name="newSub" required>
+            <input type="text" class="form-control" name="newSub" id="newSub" required>
         </div>
 
         <div class="btnContainer">

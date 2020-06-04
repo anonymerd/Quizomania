@@ -10,8 +10,13 @@
     }
     elseif(isset($_SESSION["email"]))
     {
-        // Someone is already logged in. Redirecting to the welcome page.
+        // Someone(user) is already logged in. Redirecting to the welcome page.
         header("Location:welcome.php");
+    }
+    elseif(isset($_SESSION["admin"]))
+    {
+        // Someone(admin) is already logged in. Redirecting to the admin page.
+        header("Location:admin.php");
     }
     elseif(array_key_exists("email", $_POST) && array_key_exists("password", $_POST))
     {

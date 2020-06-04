@@ -45,11 +45,11 @@
         $email = mysqli_real_escape_string($link, $_SESSION["email"]);
 
         // executing query and generating query results...
-        $query = "SELECT Name FROM users WHERE Email = '$email'";
+        $query = "SELECT Name FROM Users WHERE Email = '$email'";
         $result = mysqli_query($link, $query);
 
         // checking if user exists...
-        if(!$result)
+        if(!mysqli_num_rows($result))
             die("The user with this email does not exists");
         else
         {
