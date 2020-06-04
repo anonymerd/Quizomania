@@ -37,7 +37,7 @@
         Some more attractive text....
     </p>
 
-    <a class="btn btn-lg btn-outline-dark" href="logIn.php" role="button">
+    <a class="btn btn-lg btn-outline-dark" href="logIn" role="button">
         Take a Quiz
     </a>
 
