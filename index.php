@@ -12,6 +12,9 @@
     </a>
     <div class="form">
         <form class="form-inline">
+            <a class="btn btn-lg btn-outline-dark" type="submit" href="leaderboard.php" role="button">
+                Leaderboard
+            </a>
             <a class="btn btn-lg btn-outline-dark" type="submit" href="logIn.php" role="button">
                 LogIn
             </a>

@@ -42,6 +42,76 @@
     <a class="navbar-brand" href="index.php">
         <img src="logo/indexLogo.png" id="logoIcon">
     </a>
+
+<?php
+
+    if(isset($_SESSION["email"]))
+    {
+        // retrieving email from session variable
+        $email = mysqli_real_escape_string($link, $_SESSION["email"]);
+
+        // executing query and generating query results...
+        $query = "SELECT Name FROM Users WHERE Email = '$email'";
+        $result = mysqli_query($link, $query);
+
+        // checking if user exists...
+        if(!mysqli_num_rows($result))
+            die("The user with this email does not exists");
+        else
+        {
+            // The user exists.
+            $row = mysqli_fetch_array($result);
+            $name = $row["Name"];
+
+?>
+    <a href="index.php">
+        <div class="form">
+            <span class="userIcon">
+                <i class="far fa-user"></i>
+            </span>
+            <?php echo $name;?> 
+        </div>
+    </a>
+
+<?php
+        }
+    }
+    elseif(isset($_SESSION["admin"]))
+    {
+        // retrieving email from session variable
+        $email = mysqli_real_escape_string($link, $_SESSION["admin"]);
+
+        // executing query and generating query results...
+        $query = "SELECT Name FROM Users WHERE Email = '$email'";
+        $result = mysqli_query($link, $query);
+
+        // checking if user exists...
+        if(!mysqli_num_rows($result))
+            die("The user with this email does not exists");
+        else
+        {
+            // The user exists.
+            $row = mysqli_fetch_array($result);
+            $name = $row["Name"];
+
+?>
+    <a href="index.php">
+        <div class="form">
+            <span class="userIcon">
+                <i class="far fa-user"></i>
+            </span>
+            <?php echo $name."(admin)";?> 
+        </div>
+    </a>
+
+<?php
+        }
+
+    }
+    else
+    {
+
+?>
     <div class="form">
         <form class="form-inline">
             <a class="btn btn-lg btn-outline-dark" type="submit" href="logIn.php" role="button">
@@ -52,6 +122,12 @@
             </a>
         </form>
     </div>
+
+<?php
+
+    }
+
+?>
 </nav>
 
 <div class="leaderboardPanel">
@@ -215,3 +291,8 @@
     </form>
 
 </div>
+
+<?php
+    include "footer.php";
+
+?>
