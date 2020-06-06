@@ -14,7 +14,7 @@
 
     if(isset($_SESSION["admin"]))
     {
-        require "connectDB.php";
+        require "connectDb.php";
 
         // echo $_SESSION["admin"];
 

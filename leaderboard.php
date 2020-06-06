@@ -2,9 +2,7 @@
 
     session_start();
 
-    require "connectDB.php";
-
-    $query = "SELECT ";
+    require "connectDb.php";
 
     $title = "QUIZOMANIA - LEADERBOARD";
     include "header.php";

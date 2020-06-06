@@ -167,6 +167,9 @@
         }
     }
     else
-        die("There was a problem in submitting the quiz. Please try again.")
+    {
+        session_unset();
+        die("There was a problem in submitting the quiz. Please login again.");
+    }
 
 ?>

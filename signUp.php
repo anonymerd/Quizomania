@@ -54,6 +54,19 @@
 
 ?>
 
+<nav class="navbar">
+    <a class="navbar-brand" href="index.php">
+        <img src="logo/indexLogo.png" id="logoIcon">
+    </a>
+    <div class="form">
+        <form class="form-inline">
+            <a class="btn btn-lg btn-outline-dark" type="submit" href="leaderboard.php" role="button">
+                Leaderboard
+            </a>
+        </form>
+    </div>
+</nav>
+
 <div class="container">
     <div class="jumbotron">
         <div role="alert" class="error"><?php echo $error; ?>
