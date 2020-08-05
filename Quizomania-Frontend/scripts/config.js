@@ -1,0 +1,1 @@
+export const serverAddress = 'http://localhost/Quizomania-Backend/api/';
