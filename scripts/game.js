@@ -10,6 +10,9 @@ import { elements } from './views/base.js';
 
 const optionsEventListener = async (name, questionElements, answer, questionCount) => {
 
+    // Show loader
+    elements.loaderContainer.style.display = 'block';
+
     // Updating answers in token
     const response = await Question.updateAnswer(localStorage['token'], answer);
 
@@ -42,7 +45,11 @@ const optionsEventListener = async (name, questionElements, answer, questionCoun
 
     }
 
+    // Remove loader
+    elements.loaderContainer.style.display = 'none';
+
     return newToken;
+
 }
 
 const subjectsEventListener = async (name, subjectElements, subID, questionCount) => {
@@ -71,6 +78,10 @@ const subjectsEventListener = async (name, subjectElements, subID, questionCount
 // * Loading different sections
 
 const loadSubjectsSection = async (name, questionCount) => {
+
+    // Show loader
+    elements.loaderContainer.style.display = 'block';
+
     // Getting all subjects.
     const subjectResponse = await Subject.getAllSubjects(localStorage['token']);
     // console.log(subjects);
@@ -103,9 +114,16 @@ const loadSubjectsSection = async (name, questionCount) => {
             });
         });
     }
+
+    // Remove loader
+    elements.loaderContainer.style.display = 'none';
 }
 
 const loadQuestionSection = async (name, randomQues, QNo, newToken, questionCount) => {
+
+    // Show loader
+    elements.loaderContainer.style.display = 'block';
+
     // Rendering Question Section.
     const questionElements = GameView.renderQuestionSection();
 
@@ -115,6 +133,9 @@ const loadQuestionSection = async (name, randomQues, QNo, newToken, questionCoun
     // Event listener for options, only available once the question section renders
     questionElements['Options'].forEach(option => {
         option.addEventListener('click', event => {
+
+            // Loose focus -- For mobile screen
+            event.currentTarget.blur();
 
             // Getting the users choice
             const answer = event.currentTarget.id;
@@ -127,9 +148,16 @@ const loadQuestionSection = async (name, randomQues, QNo, newToken, questionCoun
                 });
         });
     });
+
+    // Remove loader
+    elements.loaderContainer.style.display = 'none';
 }
 
 const loadResultsSection = async (name, subID, questionCount, questions, answers) => {
+
+    // Show loader
+    elements.loaderContainer.style.display = 'block';
+
     // Saving the game details in the database
     const response = await Game.saveGame(localStorage['token'], subID, questionCount, questions, answers);
 
@@ -160,6 +188,9 @@ const loadResultsSection = async (name, subID, questionCount, questions, answers
         // Redirecting to the homepage.
         window.location.href = './';
     });
+
+    // Remove loader
+    elements.loaderContainer.style.display = 'none';
 }
 
 

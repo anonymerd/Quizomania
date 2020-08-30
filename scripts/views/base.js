@@ -69,6 +69,8 @@ export const elements = {
 
     gameContainer: document.querySelector('.game-container'),
 
+    loaderContainer: document.querySelector('.loader-container'),
+
     subjectElements: document.querySelectorAll('.subject-element'),
 
     nameContainer: document.querySelector('#user-name'),

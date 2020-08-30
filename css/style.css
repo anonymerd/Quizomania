@@ -658,6 +658,26 @@ footer .footer-message a:hover {
     min-height: 100vh;
 }
 
+.game-container .loader-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.603);
+    z-index: 2;
+    display: none;
+}
+
+.game-container .loader-container svg {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
 /* ***************************************** HEADER SECTION ********************************************** */
 
 .game-container .header-container {
@@ -671,7 +691,7 @@ footer .footer-message a:hover {
 }
 
 .game-container header .user-container {
-    /* padding: 35px; */
+    margin-top: 25px;
     color: #8cfaf1;
     font-size: 80%;
 }
@@ -716,6 +736,7 @@ footer .footer-message a:hover {
     padding: 15px;
     cursor: pointer;
     transition: box-shadow 0.2s;
+    user-select: none;
     /* border: 1px solid black; */
 }
 
@@ -805,6 +826,7 @@ footer .footer-message a:hover {
 .question-container .options-container {
     width: 85%;
     margin: 30px auto;
+    user-select: none;
 }
 
 .question-container .options-container .option {
@@ -818,6 +840,7 @@ footer .footer-message a:hover {
     transition: transform 0.2s, background-color 0.2s;
     font-size: 110%;
     cursor: pointer;
+    user-select: none;
 }
 
 .question-container .options-container .option:hover {
@@ -861,6 +884,7 @@ footer .footer-message a:hover {
     text-align: center;
     color: #f6f9fc;
     box-shadow: 3px 3px 6px 4px #001932;
+    user-select: none;
 }
 
 .result-table td,
