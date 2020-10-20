@@ -1,0 +1,537 @@
+/* Just to fix some widths */
+
+
+@media only screen and (max-width: 1600px) {
+    header {
+        width: 80%;
+    }
+
+    /* ***************************************** ./game.js ********************************************** */
+
+    .main .forms-container .forms {
+        width: 35%;
+    }
+
+    .section-subjects .subjects-container {
+        width: 75%;
+    }
+
+    .section-subjects .heading {
+        margin-top: 40px;
+    }
+
+    .section-subjects .subjects-container {
+        margin: 20px auto;
+    }
+
+    .section-question .question-container {
+        width: 40%;
+    }
+
+    .section-results .result-btn-container .btn {
+        font-size: 90%;
+    }
+
+    .section-results .about-heading {
+        margin-top: 40px;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 50%;
+    }
+
+}
+
+@media only screen and (max-width: 1440px) {
+    .section-main h1 {
+        font-size: 300%;
+    }
+
+    .section-main h3 {
+        font-size: 100%;
+    }
+
+    .main .forms-container .forms {
+        width: 40%;
+    }
+
+    .section-about .about-more {
+        width: 80%;
+    }
+
+    .section-message .form-container {
+        width: 45%;
+    }
+
+    .section-leaderboard .subject-dropdown {
+        width: 20%;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 60%;
+    }
+
+    footer .links-container {
+        width: 65%;
+    }
+
+    /* ***************************************** ./game.js ********************************************** */
+
+    .section-subjects .subjects-container {
+        width: 85%;
+    }
+
+    .section-question .question-container {
+        width: 45%;
+    }
+
+    .section-results .result-summary {
+        width: 70%;
+    }
+
+    .section-results .result-details {
+        width: 80%;
+    }
+
+    .section-results .result-btn-container {
+        width: 35%;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+
+@media only screen and (max-width: 1200px) {
+    .heading {
+        width: 70%;
+    }
+
+    header {
+        width: 80%;
+    }
+
+    header .nav-btn-container {
+        font-size: 90%;
+        margin-right: 40px;
+    }
+
+    header .nav-btn-container .btn {
+        margin-left: 35px;
+    }
+
+    .section-main h1 {
+        font-size: 300%;
+    }
+
+    .section-main h3 {
+        font-size: 100%;
+        margin: 15px 0;
+        width: 85%;
+    }
+
+    .section-main .btn {
+        font-size: 90%;
+    }
+
+    .main .fixed {
+        padding: 0 125px;
+    }
+
+    .main .forms-container .forms {
+        width: 50%;
+    }
+
+    .section-about .about-more {
+        width: 90%;
+    }
+
+    .section-message .form-container {
+        width: 50%;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 70%;
+    }
+
+    .section-leaderboard .top-3 .top-player-card {
+        width: 27%;
+    }
+
+    footer .links-container {
+        width: 80%;
+    }
+
+    footer .footer-message {
+        width: 50%;
+    }
+
+    /* ***************************************** ./game.js ********************************************** */
+
+    .section-subjects .subjects-container {
+        width: 100%;
+    }
+
+    .section-question .question-container {
+        width: 55%;
+    }
+
+    .section-results .result-summary {
+        width: 80%;
+    }
+
+    .section-results .result-details {
+        width: 85%;
+    }
+
+    .section-results .result-btn-container {
+        width: 45%;
+    }
+
+
+}
+
+/* Medium devices (tablets, less than 990px) */
+
+@media only screen and (max-width: 990px) {
+    body {
+        font-size: 17px;
+    }
+
+    .heading {
+        width: 85%;
+    }
+
+    header {
+        width: 80%;
+    }
+
+    header .logo-container a img {
+        width: 70px;
+        height: 70px;
+    }
+
+    header .nav-btn-container {
+        margin-right: 25px;
+    }
+
+    header .nav-btn-container .btn {
+        margin-left: 25px;
+    }
+
+    .main .fixed {
+        padding: 0 80px;
+    }
+
+    .main .forms-container .forms {
+        width: 60%;
+    }
+
+    .form-elements .field i {
+        border-bottom: 0;
+    }
+
+    .section-message .form-container form .form-elements .field i {
+        border-bottom: 0;
+    }
+
+    .section-about .about-more {
+        width: 95%;
+    }
+
+    .section-message .form-container {
+        width: 60%;
+    }
+
+    .section-leaderboard .top-3 .top-player-card {
+        width: 30%;
+    }
+
+    footer .links-container {
+        width: 85%;
+    }
+
+    /* ***************************************** ./game.js ********************************************** */
+
+    .game-container header .logo-container a img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .section-subjects .heading {
+        margin-top: 20px;
+    }
+
+    .section-subjects .subjects-container {
+        margin: 10px auto;
+    }
+
+    .section-subjects .subjects-container .subject-element {
+        width: 50%;
+    }
+
+    .subjects-container .subject-element figure svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .section-results .about-heading {
+        margin-top: 20px;
+    }
+
+
+}
+
+/* Small devices (landscape phones, less than 820px) */
+
+@media only screen and (max-width: 820px) {
+    body {
+        font-size: 15px;
+    }
+
+    .heading {
+        width: 90%;
+    }
+
+    header {
+        width: 70%;
+    }
+
+    header .logo-container a img {
+        width: 70px;
+        height: 70px;
+    }
+
+    header .navbar-button {
+        display: block;
+        margin: 15px;
+    }
+
+    header .nav-btn-container {
+        display: none;
+    }
+
+    .main .forms-container .forms {
+        width: 70%;
+    }
+
+    .section-about {
+        padding: 30px;
+    }
+
+    .section-about .about-more {
+        width: 95%;
+    }
+
+    .section-message .form-container {
+        width: 70%;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 85%;
+    }
+
+    footer .links-container {
+        width: 95%;
+    }
+
+    /* ***************************************** ./game.js ********************************************** */
+
+    .section-question .question-container {
+        width: 69%;
+    }
+
+    .section-results .result-summary {
+        width: 85%;
+    }
+
+    .section-results .result-details {
+        width: 90%;
+    }
+
+    .section-results .result-btn-container {
+        width: 55%;
+    }
+}
+
+/* Extra Small devices (Portrait phones, less than 600px) */
+
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    .heading {
+        width: 100%;
+    }
+
+    .heading h2 {
+        letter-spacing: 5px;
+    }
+
+    .heading h3 {
+        letter-spacing: 1px;
+    }
+
+    header {
+        padding-top: 20px;
+    }
+
+    header .logo-container a .logo-white,
+    .main .fixed .logo-container a .logo-black {
+        width: 60px;
+        height: 60px;
+    }
+
+    header .navbar-button {
+        margin: 10px;
+    }
+
+    .section-main {
+        width: 90%;
+    }
+
+    .main .forms-container .forms {
+        width: 80%;
+    }
+
+    .section-about {
+        padding: 20px;
+    }
+
+    .section-about .about-more {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .section-about .about-more .feature {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .section-leaderboard {
+        padding: 15px;
+    }
+
+    .section-leaderboard .top-3 {
+        padding: 10px;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 95%;
+    }
+
+    .section-message .form-container {
+        width: 90%;
+    }
+
+    footer .links-container {
+        width: 100%;
+    }
+
+    footer .links-container .footer-links a,
+    footer .links-container .social-links a {
+        padding: 5px 0;
+        margin: 0 5px;
+    }
+
+    footer .links-container .social-links a {
+        font-size: 150%;
+    }
+
+    /* ***************************************** ./game.js ********************************************** */
+
+    .section-subjects .subjects-container .subject-element {
+        width: 85%;
+    }
+
+    .section-question .question-container {
+        width: 95%;
+    }
+
+    .section-results .result-summary {
+        width: 95%;
+        font-size: 90%;
+    }
+
+    .section-results .result-details {
+        width: 95%;
+        font-size: 90%;
+    }
+
+    .section-results .result-btn-container {
+        width: 65%;
+        font-size: 90%;
+    }
+}
+
+
+/* For teeny tiny Screens (IDK why tf do they have internet.) */
+
+@media only screen and (max-width: 450px) {
+    body {
+        font-size: 12px;
+    }
+
+    .main .fixed {
+        padding: 0 20px;
+    }
+
+    .main .forms-container .forms {
+        width: 90%;
+    }
+
+    .section-leaderboard {
+        padding: 10px;
+    }
+
+    .section-leaderboard .top-3 {
+        padding: 5px;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 100%;
+    }
+
+    footer .links-container .footer-links ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer .links-container .footer-links a {
+        display: block;
+        margin-left: 20px;
+    }
+
+    footer .links-container .social-links a {
+        padding: 7px;
+    }
+
+    footer .footer-message {
+        width: 70%;
+    }
+
+    /* ***************************************** ./game.js ********************************************** */
+
+    .section-question .question-container {
+        width: 100%;
+    }
+
+    .section-question .question-container .question-element {
+        width: 95%;
+    }
+
+
+}
+
+/*  For fixing the height of the forms in landscape mode in mobile phone having widths(height in landscape mode) less than 670px. */
+
+@media only screen and (max-height: 670px) {
+    .main {
+        height: 670px;
+    }
+}
