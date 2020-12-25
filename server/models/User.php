@@ -149,7 +149,7 @@
         {
             /* This function adds a new user to the Database and returns true/false on whether the query was successfull. */
 
-            $query = "INSERT INTO $this->tableName (Name, Email, Password, isAdmin, createdAt) VALUES ('$this->name', '$this->email', '$this->pass', '$this->isAdmin', CURRENT_TIMESTAMP);";
+            $query = "INSERT INTO $this->tableName (Name, Email, Password, isAdmin, CreatedAt) VALUES ('$this->name', '$this->email', '$this->pass', '$this->isAdmin', CURRENT_TIMESTAMP);";
 
             $result = $this->dbConn->query($query);
 

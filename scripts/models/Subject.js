@@ -5,13 +5,10 @@ export default class Subject {
         this.id = id;
     }
 
-    static async getAllSubjects(token) {
+    static async getAllSubjects() {
         try {
             const result = await fetch(`${Config.serverAddress}Subjects/read.php`, {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
+                method: 'GET'
             });
 
             // console.log(result);

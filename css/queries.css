@@ -36,6 +36,11 @@
         margin-top: 40px;
     }
 
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 50%;
+    }
+
 }
 
 @media only screen and (max-width: 1440px) {
@@ -57,6 +62,15 @@
 
     .section-message .form-container {
         width: 45%;
+    }
+
+    .section-leaderboard .subject-dropdown {
+        width: 20%;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 60%;
     }
 
     footer .links-container {
@@ -134,6 +148,15 @@
 
     .section-message .form-container {
         width: 50%;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 70%;
+    }
+
+    .section-leaderboard .top-3 .top-player-card {
+        width: 27%;
     }
 
     footer .links-container {
@@ -221,6 +244,10 @@
         width: 60%;
     }
 
+    .section-leaderboard .top-3 .top-player-card {
+        width: 30%;
+    }
+
     footer .links-container {
         width: 85%;
     }
@@ -301,6 +328,11 @@
         width: 70%;
     }
 
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 85%;
+    }
+
     footer .links-container {
         width: 95%;
     }
@@ -379,6 +411,19 @@
         margin: 0 auto;
     }
 
+    .section-leaderboard {
+        padding: 15px;
+    }
+
+    .section-leaderboard .top-3 {
+        padding: 10px;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 95%;
+    }
+
     .section-message .form-container {
         width: 90%;
     }
@@ -423,6 +468,9 @@
     }
 }
 
+
+/* For teeny tiny Screens (IDK why tf do they have internet.) */
+
 @media only screen and (max-width: 450px) {
     body {
         font-size: 12px;
@@ -434,6 +482,19 @@
 
     .main .forms-container .forms {
         width: 90%;
+    }
+
+    .section-leaderboard {
+        padding: 10px;
+    }
+
+    .section-leaderboard .top-3 {
+        padding: 5px;
+    }
+
+    .section-leaderboard .top-3,
+    .section-leaderboard .top-10 .player-rank-bar {
+        width: 100%;
     }
 
     footer .links-container .footer-links ul {

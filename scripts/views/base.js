@@ -25,6 +25,7 @@ export const elements = {
     signUpButton: document.querySelector('.nav-btn-signup'),
     logInButton: document.querySelector('.nav-btn-login'),
     closeButton: document.querySelectorAll('.close-btn-container'), // Two buttons
+
     // Forms
     logInForm: document.querySelector('#login-form'),
     signUpForm: document.querySelector('#signup-form'),
@@ -64,6 +65,14 @@ export const elements = {
     openResetPassword: document.querySelector('#open-reset-password'),
 
     aboutFeatures: document.querySelectorAll('.feature'),
+
+    // Leaderboard elements
+    top3: document.querySelector('.top-3'),
+    top10: document.querySelector('.top-10'),
+    currentSubject: document.querySelector('.current-subject-name'),
+    subjectDropdownButton: document.querySelector('.subject-dropdown-btn'),
+    subjectDropdownContent: document.querySelector('.dropdown-content'),
+    subjectOptions: document.querySelectorAll('.subject-option'),
 
     // * ************************************************** ./game.html ********************************************
 

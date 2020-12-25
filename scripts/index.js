@@ -1,14 +1,20 @@
 import User from './models/User.js';
 import Message from './models/Message.js';
 import Game from './models/Game.js';
-import { elements } from './views/base.js';
+import Leaderboard from './models/Leaderboard.js';
+import {
+    elements
+} from './views/base.js';
 import * as SectionView from './views/sectionView.js';
 import * as NotificationView from './views/notificationView.js';
+import Subject from './models/Subject.js';
 
 
 
-{/* <li><a class="btn nav-btn-signup">Sign Up</a></li>
-<li><a class="btn nav-btn-login">Log In</a></li> */}
+{
+    /* <li><a class="btn nav-btn-signup">Sign Up</a></li>
+    <li><a class="btn nav-btn-login">Log In</a></li> */
+}
 
 let navigationButtons = `
     <li><a href="#about" class="btn nav-btn-ghost">About</a></li>
@@ -23,14 +29,14 @@ const notLoggedIn = `
 // Checking the token for finding any unsaved game.
 if ('token' in window.localStorage) {
     // There is some token. Checking the token.
-    console.log(window.localStorage['token']);
+    // console.log(window.localStorage['token']);
 
     Game.checkGameToken(window.localStorage['token'])
         .then(gameResponse => {
 
             if (gameResponse['result']) {
                 // Some user is already logged in.
-                console.log(gameResponse);
+                // console.log(gameResponse);
 
                 // Showing Log Out Button.
                 navigationButtons += `
@@ -91,8 +97,6 @@ const loader = `
 `;
 
 
-
-
 // *  -----------------------  Animations and Actions on Scrolling  ----------------------------------
 
 // Making the sticky navigation visible and invisible whenever we scroll to about section.
@@ -127,6 +131,83 @@ waypoint = new Waypoint({
     offset: 60
 });
 
+// *  -----------------------  Fetching Leaderboard  ----------------------------------
+
+// Function that filters the fetched leaderboard to the subject leaderboard.
+const getSubjectLeaderboard = (leaderboard, subjectID) => {
+    // Filtering Leaderboard as per the subject.
+    const subjectLeaderboard = leaderboard.filter(game => game.SubID == subjectID);
+
+    // Getting the top 10 games.
+    return subjectLeaderboard.sort((a, b) => b.Score - a.Score).slice(0, 10);
+}
+
+
+async function loadLeaderboard() {
+
+    try {
+        // Fetching all subjects for subjects dropdown.
+        const subjectResponse = await Subject.getAllSubjects();
+        // console.log(subjectResponse);
+        const subjects = subjectResponse.data;
+
+        let subjectList = ``;
+        subjects.forEach(subject => {
+            subjectList += `
+                <div class = "subject-option" id="${subject.SubID}">${subject.SubjectName}</div>
+            `;
+        });
+        elements.subjectDropdownContent.innerHTML = subjectList;
+
+        // Fetching all the unsorted leaderboard from the server.
+        const leaderboard = await Leaderboard.getLeaderboard();
+
+        // Rendering the default subject name (subjectID = 1).
+        elements.currentSubject.innerHTML = subjects[0].SubjectName;
+
+        // Getting the default leaderboard(subjectID = 1).
+        const currentLeaderboard = getSubjectLeaderboard(leaderboard.data, 1);
+        // Rendering Leaderboard.
+        SectionView.renderLeaderboard(currentLeaderboard);
+
+        // Event Listener for the dropdown button.
+        elements.subjectDropdownButton.addEventListener('click', () => {
+            // toggling the dropdown content.
+            elements.subjectDropdownContent.classList.toggle('dropdown-hidden');
+            elements.subjectDropdownContent.classList.toggle('animate__slideInLeft');
+        })
+
+
+        // Subject Dropdown Event Listener.
+        document.querySelectorAll('.subject-option').forEach(option => {
+            option.addEventListener('click', event => {
+                const subID = event.currentTarget.id;
+
+                // Changing the current subject name.
+                elements.currentSubject.innerHTML = event.currentTarget.innerHTML;
+
+                // hiding the dropdown content.
+                elements.subjectDropdownContent.classList.toggle('dropdown-hidden');
+                elements.subjectDropdownContent.classList.toggle('animate__slideInLeft');
+
+                // Getting the leaderboard of the selected subject.
+                const currentLeaderboard = getSubjectLeaderboard(leaderboard.data, subID);
+                console.log(subID);
+                console.log(currentLeaderboard);
+
+                // Rendering the leaderboard.
+                SectionView.renderLeaderboard(currentLeaderboard);
+
+            });
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// Loading the leaderboard on page load.
+loadLeaderboard();
 
 
 // *  -----------------------  Event Listeners  ----------------------------------
@@ -287,5 +368,3 @@ elements.resetPasswordButtonAction.addEventListener('click', event => {
         elements.resetPasswordForm.reportValidity();
     }
 })
-
-

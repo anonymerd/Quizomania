@@ -26,7 +26,7 @@
 
     // Validating the received data.
     validateData('Name', $data['Name'], STRING);
-    validateData('Email', $data['Email'], STRING); // TODO:- Validate Email to be an email using regular expression and not as a string later.
+    validateData('Email', $data['Email'], STRING); // TODO:- Validate Email using regular expression and not as a string later.
     validateData('Message', $data['Message'], STRING);
 
     // Creating a new database connection...

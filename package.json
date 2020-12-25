@@ -1,0 +1,19 @@
+{
+  "name": "quizomania",
+  "version": "1.0.0",
+  "description": "The Quiz Game",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anonymerd/Quizomania.git"
+  },
+  "author": "Rohit Bisht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anonymerd/Quizomania/issues"
+  },
+  "homepage": "https://github.com/anonymerd/Quizomania#readme"
+}

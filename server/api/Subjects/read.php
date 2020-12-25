@@ -19,13 +19,13 @@
         throwError($error = '405 Method Not Allowed');
     }
 
-    /**
-     *  Validating the token.
-     * This will only return if the token is successfully verified.
-     * The returned value are the details about the verified user as associative array.
-     */
+    // /**
+    //  *  Validating the token.
+    //  * This will only return if the token is successfully verified.
+    //  * The returned value are the details about the verified user as associative array.
+    //  */
 
-    $tokenUser = validateAccessToken(); // Since any valid user can access all the subject name, therefore no need to check further.
+    // $tokenUser = validateAccessToken(); // Since any valid user can access all the subject name, therefore no need to check further.
 
     // Creating a new database connection...
     $database = new Database();

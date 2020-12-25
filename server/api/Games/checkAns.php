@@ -101,6 +101,8 @@
 
     $token = generateToken($payload);
 
+    // print_r($token);
+
     $result = $game->addGame();
 
     $returndata = array(

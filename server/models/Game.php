@@ -119,12 +119,34 @@
 
         }
 
+        // Fetching the leaderboard.
+        public function getLeaderboard()
+        {
+            /* This fuction fetches the leaderboard from the database. */
+
+            $query = "SELECT users.Name, subjects.SubID, subjects.SubjectName, game.Score FROM users, subjects, game WHERE game.PlayerID = users.ID AND game.SubID = subjects.SubID";
+
+            $result = $this->dbConn->query($query);
+
+            if(result)
+            {
+                // Leaderboard fetched successfuly.
+                return $result;
+            }
+            else
+            {
+                // Leaderoard Not fetched.
+                return false;
+            }
+
+        }
+
         // Creating a new Game
         public function addGame()
         {
             /* This function adds a new Game to the Database and returns true/false on whether the query was successfull. */
 
-            $query = "INSERT INTO $this->tableName (PlayerID, SubID, TotalQ, AttemptedQ, CorrectAns, Score, createdAt) VALUES ($this->playerID, $this->subID, $this->totalQues, $this->attemptedQues, $this->correctAns, $this->score, $this->createdAt);";
+            $query = "INSERT INTO $this->tableName (PlayerID, SubID, TotalQ, AttemptedQ, CorrectAns, Score, CreatedAt) VALUES ($this->playerID, $this->subID, $this->totalQues, $this->attemptedQues, $this->correctAns, $this->score, $this->createdAt);";
 
             $result = $this->dbConn->query($query);
 

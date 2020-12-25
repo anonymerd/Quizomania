@@ -3,15 +3,14 @@ import Question from './models/Question.js';
 import Game from './models/Game.js';
 
 import * as GameView from './views/gameView.js';
-import { elements } from './views/base.js';
+import {
+    elements
+} from './views/base.js';
 
 
 // * Event Listeners that should be implemented after the certain sections are rendered
 
 const optionsEventListener = async (name, questionElements, answer, questionCount) => {
-
-    // Show loader
-    elements.loaderContainer.style.display = 'block';
 
     // Updating answers in token
     const response = await Question.updateAnswer(localStorage['token'], answer);
@@ -21,8 +20,7 @@ const optionsEventListener = async (name, questionElements, answer, questionCoun
     if (!response['result']) {
         // Answer not updated in the token
         alert(`Error: ${response['error']}\nMessage: ${response['message']}`);
-    }
-    else {
+    } else {
 
         const updatedData = response['data'];
         newToken = updatedData['token'];
@@ -32,8 +30,7 @@ const optionsEventListener = async (name, questionElements, answer, questionCoun
 
             // Question is allowed to render.
             GameView.renderQuestion(questionElements, updatedData['randomQues'], updatedData['QNo'], newToken);
-        }
-        else {
+        } else {
             // Game Over.
 
             // Removing the question section.
@@ -44,9 +41,6 @@ const optionsEventListener = async (name, questionElements, answer, questionCoun
         }
 
     }
-
-    // Remove loader
-    elements.loaderContainer.style.display = 'none';
 
     return newToken;
 
@@ -83,7 +77,7 @@ const loadSubjectsSection = async (name, questionCount) => {
     elements.loaderContainer.style.display = 'block';
 
     // Getting all subjects.
-    const subjectResponse = await Subject.getAllSubjects(localStorage['token']);
+    const subjectResponse = await Subject.getAllSubjects();
     // console.log(subjects);
 
     // Checking the response
@@ -91,8 +85,7 @@ const loadSubjectsSection = async (name, questionCount) => {
         // Invalid Token/ Database Error
         // console.log(subjectResponse);
         window.location.href = './index.html';
-    }
-    else {
+    } else {
 
         // All good
 
@@ -134,6 +127,9 @@ const loadQuestionSection = async (name, randomQues, QNo, newToken, questionCoun
     questionElements['Options'].forEach(option => {
         option.addEventListener('click', event => {
 
+            // Show loader
+            elements.loaderContainer.style.display = 'block';
+
             // Loose focus -- For mobile screen
             event.currentTarget.blur();
 
@@ -145,6 +141,9 @@ const loadQuestionSection = async (name, randomQues, QNo, newToken, questionCoun
                 .then(newToken => {
                     // Updating the token.
                     localStorage['token'] = newToken;
+
+                    // Remove loader
+                    elements.loaderContainer.style.display = 'none';
                 });
         });
     });
@@ -204,8 +203,7 @@ const loadGame = async token => {
 
         // Invalid token/ Database error.
         window.location.href = './index.html';
-    }
-    else {
+    } else {
 
         // Valid token.
         const state = gameResponse['data'];
@@ -223,15 +221,13 @@ const loadGame = async token => {
             // Game has ended. Displaying the subject section again
             // Game has ended. Displaying the subject section again
             await loadResultsSection(name, state['subID'], questionCount, state['randomQues'], state['answers']);
-        }
-        else if ('subID' in state && state['subID'] !== false) {
+        } else if ('subID' in state && state['subID'] !== false) {
             // Game has already started.
 
             // Loading Question Section
             await loadQuestionSection(name, state['randomQues'], state['QNo'], token, questionCount);
 
-        }
-        else {
+        } else {
 
             // Loading Subjects section.
 
@@ -239,9 +235,6 @@ const loadGame = async token => {
         }
     }
 };
-
-
-
 
 
 // * THE MAIN

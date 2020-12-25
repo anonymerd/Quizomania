@@ -1,4 +1,6 @@
-import { elements } from './base.js';
+import {
+    elements
+} from './base.js';
 
 export const hideAllSections = () => {
     elements.allSections.forEach((section) => {
@@ -26,8 +28,7 @@ export const toggleMobileNavigation = () => {
             elements.navbarButtonsContainer.classList.add('animate__fadeInRightBig');
             elements.navbarButtonsContainer.classList.remove('mobile-nav');
         }, 1000);
-    }
-    else {
+    } else {
         // Opening the Mobile Navigation.
         elements.navbarButtonsContainer.classList.add('mobile-nav');
         elements.navbarButtonsContainer.classList.remove('animate__fadeOutRight');
@@ -136,3 +137,43 @@ export const hideFormsSection = () => {
         showAllSections();
     }, 800);
 };
+
+// Showing Leaderboard Section
+export const renderLeaderboard = leaderboard => {
+    // Rendering top 3 players
+    let top3Players = `
+        <div class = "top-player-card rank-2">
+            <i class = "fas fa-medal"></i> 
+            <span class = "player-name">${leaderboard[1].Name}</span> 
+            <span class = "player-score">${leaderboard[1].Score}</span> 
+        </div>
+        <div class = "top-player-card rank-1">
+            <i class = "fas fa-medal"></i> 
+            <span class = "player-name">${leaderboard[0].Name}</span> 
+            <span class = "player-score">${leaderboard[0].Score}</span> 
+        </div>
+        <div class = "top-player-card rank-3">
+            <i class = "fas fa-medal"></i> 
+            <span class = "player-name">${leaderboard[2].Name}</span> 
+            <span class = "player-score">${leaderboard[2].Score}</span> 
+        </div>
+    `;
+
+    elements.top3.innerHTML = top3Players;
+
+    // Rendering rest of the players.
+
+    let top10Plaeyers = ``;
+    const length = leaderboard.length < 10 ? leaderboard.length : 10;
+    for (let i = 3; i < length; i++) {
+        top10Plaeyers += `
+            <div class = "player-rank-bar">
+            <span class = "player-rank">${i+1}</span> 
+            <span class = "player-name">${leaderboard[i].Name}</span> 
+            <span class = "player-score">${leaderboard[i].Score}</span> 
+            </div>
+        `;
+    }
+
+    elements.top10.innerHTML = top10Plaeyers;
+}

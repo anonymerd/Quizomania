@@ -1,2 +1,4 @@
 scripts/config.js
 server/config/Globals.php
+server/api/Others/sendMail.php
+server/api/Others/sendPasswordResetLink.php

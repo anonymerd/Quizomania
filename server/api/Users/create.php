@@ -38,7 +38,7 @@
     $user->name = $dbConn->real_escape_string($data['Name']);
     $user->email = $dbConn->real_escape_string($data['Email']);
     $user->pass = $dbConn->real_escape_string($data['Password']);
-    $user->isAdmin = false;
+    $user->isAdmin = 0;
 
     // Checking whether user already exist.
     $chkUser = $user->checkEmail();
@@ -51,7 +51,7 @@
         if($result)
             returnResponse($message = 'Added Successfuly');
         else
-            throwError($error = 'Database error', $message = 'User Not Added');
+            throwError($error = 'Database error ' . $dbConn->error, $message = 'User Not Added');
 
     }
     else
